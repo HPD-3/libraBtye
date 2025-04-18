@@ -38,7 +38,6 @@ If you prefer to run SQL from the command line:
 2. Type the following commands:
    
    ```bash
-   mysql -u root
    CREATE DATABASE library_system;
    USE library_system;
 
