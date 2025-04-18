@@ -36,34 +36,36 @@ You can either run the SQL script using phpMyAdmin or directly from the MySQL co
 If you prefer to run SQL from the command line:
 1. Open the **XAMPP Control Panel** and click **Shell** to open the terminal.
 2. Type the following commands:
+   
    ```bash
-  -- Create the 'users' table
-CREATE TABLE users (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  username VARCHAR(50) NOT NULL UNIQUE,
-  password VARCHAR(255) NOT NULL,
-  bio VARCHAR(250) NOT NULL,
-  email VARCHAR(50) NOT NULL,
-  image BLOB NOT NULL
-);
+   mysql -u root
+   CREATE DATABASE library_system;
+   USE library_system;
 
--- Create the 'favorites' table
-CREATE TABLE favorites (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  book_id VARCHAR(100) NOT NULL,
-  title VARCHAR(255),
-  authors TEXT,
-  thumbnail TEXT,
-  rating FLOAT,
-  UNIQUE(user_id, book_id)
-);
+   CREATE TABLE users (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     username VARCHAR(50) NOT NULL UNIQUE,
+     password VARCHAR(255) NOT NULL,
+     bio VARCHAR(250) NOT NULL,
+     email VARCHAR(50) NOT NULL,
+     image BLOB NOT NULL
+   );
 
--- Create the 'website_reviews' table
-CREATE TABLE website_reviews (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    reviewer_name VARCHAR(255) NOT NULL,  -- Name of the reviewer
-    rating INT NOT NULL,  -- Rating from 1 to 5 stars
-    review TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+   CREATE TABLE favorites (
+     id INT AUTO_INCREMENT PRIMARY KEY,
+     user_id INT NOT NULL,
+     book_id VARCHAR(100) NOT NULL,
+     title VARCHAR(255),
+     authors TEXT,
+     thumbnail TEXT,
+     rating FLOAT,
+     UNIQUE(user_id, book_id)
+   );
+
+   CREATE TABLE website_reviews (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       reviewer_name VARCHAR(255) NOT NULL,  -- Name of the reviewer
+       rating INT NOT NULL,  -- Rating from 1 to 5 stars
+       review TEXT,
+       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+   );
